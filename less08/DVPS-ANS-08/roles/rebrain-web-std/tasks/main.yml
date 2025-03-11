@@ -1,0 +1,17 @@
+- name: Nginx change default config
+  block: 
+
+
+  - name: Copy the new nginx.conf 
+    become: yes
+    template:
+      src: nginx.conf.j2
+      dest: "/etc/nginx.conf"
+    notify:
+    - reload nginx
+
+  - name: Copy new index page
+    become: yes
+    template:
+      src: index.html.j2
+      dest: "/usr/share/nginx/html/index.html"
