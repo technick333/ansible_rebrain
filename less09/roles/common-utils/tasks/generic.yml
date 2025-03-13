@@ -1,0 +1,6 @@
+- name: Copy tmux conf 
+  become: True
+  ansible.builtin.copy:
+    src: "{{ files_src_path | default() }}.tmux.conf"
+    dest: /root/.tmux.conf
+

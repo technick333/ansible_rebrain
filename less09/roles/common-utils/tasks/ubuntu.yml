@@ -1,0 +1,14 @@
+--- 
+# roles/common-utils/tasks/ubuntu.yml
+- name: Print pakages list
+  debug:
+    msg: "{{ list_utils }}"
+
+
+- name: Install the list packages "
+  become: True
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ list_utils }}"

@@ -1,0 +1,23 @@
+---
+# roles/common-utils/tasks/main.yml
+- name: Сollecting only the necessary facts
+  setup:
+    filter:
+      - os_family
+      - ansible_distribution
+      - ansible_distribution_release
+      - ansible_distribution_version
+
+- name: Set default value if an item is not present in the list
+  set_fact:
+    nginx_task_file: "{{ supported_os_distribution[ansible_facts['distribution'] | lower] | default('stub.yml')}}"
+
+- name: test
+  debug:
+    msg: "{{nginx_task_file}}"
+
+- name: Include tasks for the proper OS
+  include_tasks: "{{ nginx_task_file }}"
+
+- name: Include common tasks
+  include_tasks: generic.yml

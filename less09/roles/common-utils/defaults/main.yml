@@ -1,0 +1,7 @@
+list_utils:
+  - htop
+  - net-tools
+  - vim
+  - tmux
+
+files_src_path: ""

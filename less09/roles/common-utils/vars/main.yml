@@ -1,0 +1,5 @@
+---
+# roles/common-utils/vars/main.yml
+supported_os_distribution:
+  ubuntu: ubuntu.yml
+  fedora: fedora.yml

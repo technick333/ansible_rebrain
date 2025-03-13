@@ -1,0 +1,7 @@
+---
+- hosts: web_servers
+  gather_facts: no
+  vars:
+    #files_src_path: "../../files/"
+  roles:
+    - role: common-utils
